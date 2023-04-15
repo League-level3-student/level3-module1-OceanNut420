@@ -15,7 +15,37 @@ public class LongChipCompetition {
 
     public static void main(String[] args) {
         LongChipCompetition lcc = new LongChipCompetition();
-
+        
+        
+    }
+    
+    public void chip() {
+    	initializeBeatles();
+    	
+    	double bigLength = 0;
+    	String name = "";
+    	
+    	for(int i=0;i<theBeatles.size();i++) {
+    		
+    		Beatle beetle = theBeatles.get(i);
+    		ArrayList<Chip> people = beetle.getChips();
+    		
+    		for(int j=0;j<people.size();j++) {
+    			Chip chip = people.get(j);
+    			double length = chip.getLength();
+    			
+    			if(length > bigLength) {
+    				bigLength = length;
+    				name = beetle.getName();
+    			}
+    			    			
+    		}
+    		
+    	}
+    	
+    	System.out.println(bigLength);
+		System.out.println(name);
+    	
     }
 
     private void initializeBeatles() {

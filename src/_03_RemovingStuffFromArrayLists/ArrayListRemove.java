@@ -24,6 +24,17 @@ public class ArrayListRemove {
     //    ArrayList
     public static ArrayList<Stuff> cleanOutTheYard( ArrayList<Stuff> yard ) {
         
+    	for(int i=0;i<yard.size();i++) {
+    		
+    		Stuff stuff = yard.get(i);
+    		ArrayList<Stuff> things = stuff.get
+    		
+    		if(.equals(Dirt)) {
+    			things.remove(i);
+    		}
+    		
+    	}
+    	
         return yard;
     }
     
