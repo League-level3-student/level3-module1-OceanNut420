@@ -27,9 +27,9 @@ public class ArrayListRemove {
     	for(int i=0;i<yard.size();i++) {
     		
     		Stuff stuff = yard.get(i);
-    		ArrayList<Stuff> things = stuff.get
+    		ArrayList<String> things = stuff.get();
     		
-    		if(.equals(Dirt)) {
+    		if(things.equals("dirt")) {
     			things.remove(i);
     		}
     		
@@ -37,11 +37,18 @@ public class ArrayListRemove {
     	
         return yard;
     }
+    //
     
     // 2. Write a method that removes the hash tag ('#') characters from the
     //    ArrayList and returns it
     public static ArrayList<Character> removeHashTags(ArrayList<Character> list) {
 
+    	for(int i=0;i<list.size();i++) {
+    		
+    		Character character = list.get(i);
+    		
+    	}
+    	
         return list;
     }
 }
