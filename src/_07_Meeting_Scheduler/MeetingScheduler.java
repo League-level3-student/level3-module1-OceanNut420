@@ -28,23 +28,22 @@ public class MeetingScheduler {
     	
     	HashMap<String, ArrayList<Integer>> one = person1.getSchedule();
     	HashMap<String, ArrayList<Integer>> two = person2.getSchedule();
-    	Schedule elfin = new Schedule();
+    	Schedule meet = new Schedule();
         
     	for(int i=0;i<one.size();i++) {
     		
-    		fortnite();
+    		System.out.println(one.get(i));
+    		System.out.println("1");
+    		//spdrmn crss th spdr vrs
     		
     	}
     	
-        return elfin;
-    }    
-    
-    //
-    //
-    //
-    
-    static void fortnite() {
-    	
+        return meet;
     }
     
+    //
+    //
+    //
+    
+        
 }
