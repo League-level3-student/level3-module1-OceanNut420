@@ -26,24 +26,34 @@ public class MeetingScheduler {
      */
     public static Schedule getMutualAvailability(Schedule person1, Schedule person2) {
     	
-    	HashMap<String, ArrayList<Integer>> one = person1.getSchedule();
-    	HashMap<String, ArrayList<Integer>> two = person2.getSchedule();
+    	HashMap<String, ArrayList<Integer>> pone = person1.getSchedule();
+    	HashMap<String, ArrayList<Integer>> ptwo = person2.getSchedule();
     	Schedule meet = new Schedule();
-        
-    	for(int i=0;i<one.size();i++) {
+    	
+    	ArrayList<String> days = new ArrayList<String>();
+    	days.add("Monday");
+    	days.add("Tuesday");
+    	days.add("Wednesday");
+    	days.add("Thursday");
+    	days.add("Friday");
+    	days.add("Saturday");
+    	days.add("Sunday");
     		
-    		System.out.println(one.get(i));
-    		System.out.println("1");
-    		//spdrmn crss th spdr vrs
+    	for(int i=0;i<7;i++) {
+    		ArrayList<Integer> day = pone.get(days.get(i));
+    		ArrayList<Integer> day2 = ptwo.get(days.get(i));
+    		    	
+    		System.out.println(day);
+    		System.out.println("");
+    		
+    		for(int j=0;j<3;j++) {
+    			if(day.get(j) == day2.get(j)) {
+    				meet.addAvailability(days.get(i), day.get(0));
+    			}
+    		}
     		
     	}
     	
         return meet;
     }
-    
-    //
-    //
-    //
-    
-        
 }
