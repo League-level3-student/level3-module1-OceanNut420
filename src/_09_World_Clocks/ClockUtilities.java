@@ -30,7 +30,7 @@ public class ClockUtilities {
     }
 
     /*
-     * Use this method to get time information (Calendar object) for a city The
+     * Use this method to get time information (Calendar object) for a city. The
      * input requestedCity must be in the format "city, country" Example:
      * "San Diego, US"
      */

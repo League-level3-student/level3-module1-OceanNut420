@@ -3,10 +3,12 @@ package _09_World_Clocks;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
@@ -35,6 +37,7 @@ import javax.swing.Timer;
  */
 
 public class WorldClocks implements ActionListener {
+	
     ClockUtilities clockUtil;
     Timer timer;
     TimeZone timeZone;
@@ -47,19 +50,29 @@ public class WorldClocks implements ActionListener {
     String dateStr;
     String timeStr;
     
+    HashMap<String, TimeZone> time = new HashMap<String, TimeZone>();
+    
     public WorldClocks() {
+    	
+    	
+    	
         clockUtil = new ClockUtilities();
 
-        // The format for the city must be: city, country (all caps)
-        city = "Chicago, US";
-        timeZone = clockUtil.getTimeZoneFromCityName(city);
+        for(int i=0;i<2;i++) {
+        	// The format for the city must be: city, country (all caps)
+        	city = JOptionPane.showInputDialog("");
         
-        Calendar calendar = Calendar.getInstance(timeZone);
-        String month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
-        String dayOfWeek = calendar.getDisplayName( Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-        dateStr = dayOfWeek + " " + month + " " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.YEAR);
         
-        System.out.println(dateStr);
+        	timeZone = clockUtil.getTimeZoneFromCityName(city);
+        
+        	Calendar calendar = Calendar.getInstance(timeZone);
+        	String month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
+        	String dayOfWeek = calendar.getDisplayName( Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+        	dateStr = dayOfWeek + " " + month + " " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.YEAR);
+        
+        	System.out.println(dateStr);
+        
+        }
 
         // Sample starter program
         frame = new JFrame();
@@ -78,7 +91,8 @@ public class WorldClocks implements ActionListener {
         timer.start();
     }
 
-    @Override
+    
+	@Override
     public void actionPerformed(ActionEvent arg0) {
         Calendar c = Calendar.getInstance(timeZone);
         String militaryTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
