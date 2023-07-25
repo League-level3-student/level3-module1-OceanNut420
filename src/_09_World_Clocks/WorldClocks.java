@@ -97,9 +97,9 @@ public class WorldClocks implements ActionListener {
     	
     }
     
-	@Override
-    public void actionPerformed(ActionEvent arg0) {
-        Calendar c = Calendar.getInstance(timeZone);
+    void displayCities() {
+    	
+    	Calendar c = Calendar.getInstance(timeZone);
         String militaryTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
         String twelveHourTime = " [" + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND) + "]";
         timeStr = militaryTime + twelveHourTime;
@@ -108,9 +108,26 @@ public class WorldClocks implements ActionListener {
         textArea.setText(city + "\n" + dateStr + "\n" + timeStr);
         frame.pack();
         
-        if(arg0.equals(button)) {
-        	JOptionPane.showInputDialog("City:");
-        	System.out.println("ergreggeregr");
+        String date = "";
+        
+        for(String s: time.keySet()) {
+        	
+        	date = getCity(s);
+        	
+        }
+    	
+    }
+    
+	@Override
+    public void actionPerformed(ActionEvent arg0) {
+                
+        if(button == arg0.getSource()) {
+        	String city = JOptionPane.showInputDialog("City:");
+        	timeZone = clockUtil.getTimeZoneFromCityName(city + ", US");
+        	time.put(city, timeZone);
+        	
+        	displayCities();
+        	
         }
         
     }
