@@ -99,22 +99,31 @@ public class WorldClocks implements ActionListener {
     
     void displayCities() {
     	
-    	Calendar c = Calendar.getInstance(timeZone);
-        String militaryTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
-        String twelveHourTime = " [" + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND) + "]";
-        timeStr = militaryTime + twelveHourTime;
+    	
         
         System.out.println(timeStr);
         textArea.setText(city + "\n" + dateStr + "\n" + timeStr);
         frame.pack();
         
-        String date = "";
+        dateStr = "";
+        timeStr = "";
+        String msg = "";
         
         for(String s: time.keySet()) {
         	
-        	date = getCity(s);
+        	dateStr = getCity(s);
+        	
+        	Calendar c = Calendar.getInstance(time.get(s));
+            String militaryTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
+            String twelveHourTime = " [" + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND) + "]";
+            timeStr = militaryTime + twelveHourTime;
+            
+            msg += s + "\n" + dateStr + "\n" + timeStr + "\n";
         	
         }
+        
+        textArea.setText(msg);
+        frame.pack();
     	
     }
     
@@ -123,7 +132,7 @@ public class WorldClocks implements ActionListener {
                 
         if(button == arg0.getSource()) {
         	String city = JOptionPane.showInputDialog("City:");
-        	timeZone = clockUtil.getTimeZoneFromCityName(city + ", US");
+        	timeZone = clockUtil.getTimeZoneFromCityName(city);
         	time.put(city, timeZone);
         	
         	displayCities();
